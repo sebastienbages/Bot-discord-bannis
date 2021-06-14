@@ -8,6 +8,7 @@ module.exports = {
 	usage: '<text>',
 	guildOnly: true,
 	cooldown: 0,
+	permissions: 'MANAGE_MESSAGES',
 	execute(message, args) {
 		message.delete().catch(console.error);
 

@@ -13,6 +13,13 @@ module.exports = {
 
 		const command = client.commands.get(commandName);
 
+		if (command.permissions) {
+			const authorPerms = message.channel.permissionsFor(message.author);
+			if (!authorPerms || !authorPerms.has(command.permissions)) {
+				return message.reply('You can not do this!');
+			}
+		}
+
 		if (command.guildOnly && message.channel.type === 'dm') {
 			return message.reply('je ne peux pas éxécuter cette commande dans un salon privé');
 		}
