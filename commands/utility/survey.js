@@ -2,14 +2,14 @@ const { MessageEmbed } = require('discord.js');
 const { color } = require('../../config.json');
 
 module.exports = {
-	name: 'say',
-	description: 'Envoi un message enrichi avec le bot',
+	name: 'survey',
+	description: 'Créé un sondage',
 	args: true,
-	usage: '<texte>',
+	usage: '<question>',
 	guildOnly: true,
-	aliases: ['embed'],
+	aliases: ['question', 'sondage'],
 	cooldown: 0,
-	permissions: 'MANAGE_MESSAGES',
+	permissions: 'ADMINISTRATOR',
 	execute(message, args) {
 		message.delete().catch(console.error);
 

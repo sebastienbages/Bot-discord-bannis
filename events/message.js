@@ -11,7 +11,9 @@ module.exports = {
 
 		if (!client.commands.has(commandName)) return;
 
-		const command = client.commands.get(commandName);
+		const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+		if (!command) return;
 
 		if (command.permissions) {
 			const authorPerms = message.channel.permissionsFor(message.author);
@@ -41,7 +43,7 @@ module.exports = {
 		}
 		catch (error) {
 			console.error(error);
-			message.reply('une erreur s\'est produite, veuillez contacter un administrateur');
+			message.reply('Une erreur s\'est produite, veuillez contacter un administrateur');
 		}
 	},
 };

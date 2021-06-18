@@ -2,12 +2,12 @@ const { MessageEmbed } = require('discord.js');
 const { color } = require('../../config.json');
 
 module.exports = {
-	name: 'addrole',
-	description: 'Ajoute un rôle pour un membre',
+	name: 'removerole',
+	description: 'Supprime un rôle pour un membre',
 	args: true,
 	usage: '<utilisateur> <role>',
 	guildOnly: false,
-	aliases: ['ajouter_role'],
+	aliases: ['supprimer_role'],
 	cooldown: 0,
 	permissions: 'MANAGE_ROLES',
 	execute(message, args) {
@@ -44,16 +44,22 @@ module.exports = {
 
 		message.delete();
 
-		user.roles.add(role.id);
+		if (user.roles.cache.has(role.id)) {
+			user.roles.remove(role.id);
 
-		const dmMessageToUser = new MessageEmbed()
-			.setColor(color)
-			.setDescription(`Bravo ! Tu as reçu le rôle de **${role.name}** !`);
+			return message.channel.send('Rôle supprimé avec succès !')
+				.then(msg => msg.delete({ timeout: 5000 }))
+				.catch(console.error);
+		}
+		else {
+			const dmMessageToUser = new MessageEmbed()
+				.setColor(color)
+				.setDescription('Cet utilisateur ne possède pas ce rôle');
 
-		user.send(dmMessageToUser).catch(console.error);
+			return message.channel.send(dmMessageToUser)
+				.then(msg => msg.delete({ timeout: 5000 }))
+				.catch(console.error);
+		}
 
-		return message.channel.send('Rôle attribué avec succès !')
-			.then(msg => msg.delete({ timeout: 5000 }))
-			.catch(console.error);
 	},
 };

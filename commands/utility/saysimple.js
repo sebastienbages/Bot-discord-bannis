@@ -2,8 +2,9 @@ module.exports = {
 	name: 'say',
 	description: 'Envoi un message avec le bot',
 	args: true,
-	usage: '<text>',
+	usage: '<texte>',
 	guildOnly: true,
+	aliases: ['dire', 'parler'],
 	cooldown: 0,
 	permissions: 'MANAGE_MESSAGES',
 	execute(message, args) {

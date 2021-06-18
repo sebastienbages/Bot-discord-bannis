@@ -7,5 +7,11 @@
     },
     "channels": {
         "welcome": "709067153508270186"
+    },
+    "webhook": {
+        "serverGuard": {
+            "id": "672549851153563659",
+            "token": "43QNnNesDrMM2om38Aqvr0JwymKnKHrz8Z4-6oO6O2eQA-x4_aclWwrf7c_EVpnJ0T1a"
+        }
     }
 }
