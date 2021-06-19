@@ -4,6 +4,7 @@ const { token } = require('./config.json');
 
 const client = new Client();
 client.commands = new Collection();
+client.cooldowns = new Collection();
 
 const commandFolders = fs.readdirSync('./commands');
 

@@ -1,6 +1,6 @@
 module.exports = {
-	name: 'say',
-	description: 'Envoi un message avec le bot',
+	name: 'saysimple',
+	description: 'Envoi un message avec le bot dans le salon utilisé',
 	args: true,
 	usage: '<texte>',
 	guildOnly: true,
@@ -8,11 +8,9 @@ module.exports = {
 	cooldown: 0,
 	permissions: 'MANAGE_MESSAGES',
 	execute(message, args) {
-		message.delete().catch(console.error);
 
 		const messageToSend = args.join(' ');
 
-		return message.channel.send(messageToSend)
-			.catch(console.error);
+		return message.channel.send(messageToSend);
 	},
 };

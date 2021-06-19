@@ -1,21 +1,20 @@
 const { WebhookClient } = require('discord.js');
-const { serverGuard } = require('../../config.json');
+const { webhooks } = require('../../config.json');
 
 module.exports = {
 	name: 'restart',
-	description: 'Envoi un message d\'alerte de restart du serveur',
+	description: 'Envoi un message d\'alerte de restart du serveur en utilisant le Webhook Gardien du serveur',
 	args: false,
-	usage: '',
-	guildOnly: false,
-	aliases: [],
+	usage: '[nom de la commande]',
+	guildOnly: true,
+	aliases: null,
 	cooldown: 0,
 	permissions: 'ADMINISTRATOR',
-	execute(message) {
-		message.delete();
+	execute() {
 
-		const webhook = new WebhookClient(serverGuard.id, serverGuard.token);
+		const webhook = new WebhookClient(webhooks.serverGuard.id, webhooks.serverGuard.token);
 		const msg = ':warning: @everyone Nous allons redémarrer le serveur, veuillez vous déconnecter :warning:';
 
-		return webhook.send(msg).catch(console.error);
+		webhook.send(msg);
 	},
 };
