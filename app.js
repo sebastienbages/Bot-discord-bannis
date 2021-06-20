@@ -28,4 +28,13 @@ for (const file of eventFiles) {
 	}
 }
 
+client.services = new Collection();
+
+const servicesFiles = fs.readdirSync('./services').filter(file => file.endsWith('.js'));
+
+for (const file of servicesFiles) {
+	const service = require(`./services/${file}`);
+	client.services.set(service.name, service);
+}
+
 client.login(process.env.TOKEN || token);

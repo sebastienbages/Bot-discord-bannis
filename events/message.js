@@ -7,11 +7,17 @@ module.exports = {
 	once: false,
 	execute(message, client) {
 
+		if (message.author.bot) return;
+
 		if (message.author.id === votesKeeper.id) {
-			message.delete({ timeout: 4 * 60 * 60 * 1000 });
+			return message.delete({ timeout: 4 * 60 * 60 * 1000 });
 		}
 
-		if (!message.content.startsWith(prefix) || message.author.bot) return;
+		if (message.channel.type === 'dm' && !message.content.startsWith(prefix)) {
+			return client.services.get('messageToAdmin').execute(message, client.users);
+		}
+
+		if (!message.content.startsWith(prefix)) return;
 
 		const args = message.content.slice(prefix.length).trim().split(/ +/);
 		const commandName = args.shift().toLowerCase();
@@ -26,7 +32,7 @@ module.exports = {
 
 		if (command.permissions) {
 
-			const guild = client.guilds.cache.find(g => g.id === guildId);
+			const guild = client.guilds.cache.find(g => g.id === process.env.GUILD_ID || guildId);
 			const authorPerms = guild.members.cache.find(user => user.id === message.author.id);
 
 			if (!authorPerms || !authorPerms.hasPermission(command.permissions)) {
