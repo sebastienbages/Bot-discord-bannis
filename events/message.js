@@ -5,16 +5,16 @@ const voteKeeperId = process.env.WH_VK_ID;
 module.exports = {
 	name: 'message',
 	once: false,
-	execute(message, client) {
+	execute(message, client, connection) {
 
 		if (message.author.id === voteKeeperId) {
-			return message.delete({ timeout: 4 * 60 * 60 * 1000 });
+			return client.services.get('voteMessage').execute(message, connection);
 		}
 
 		if (message.author.bot) return;
 
 		if (message.channel.type === 'dm' && !message.content.startsWith(prefix)) {
-			return client.services.get('messageToAdmin').execute(message, client.users);
+			return client.services.get('messageToAdmin').execute(message, client.users, connection);
 		}
 
 		if (!message.content.startsWith(prefix)) return;
@@ -92,7 +92,7 @@ module.exports = {
 		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
 		try {
-			command.execute(message, args);
+			command.execute(message, args, connection);
 		}
 		catch (error) {
 			console.error(error);

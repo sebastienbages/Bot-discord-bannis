@@ -1,4 +1,4 @@
-const { channels, color } = require('../config.json');
+const { color } = require('../config.json');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
 	execute(member) {
 		console.log(`Détection du départ du joueur "${member.displayName}"`);
 
-		const welcomechannel = member.guild.channels.cache.find(channel => channel.id === channels.welcome);
+		const welcomechannel = member.guild.channels.cache.find(channel => channel.id === process.env.CHA_WELCOME);
 
 		const goodByeEmbed = new MessageEmbed()
 			.setColor(color)

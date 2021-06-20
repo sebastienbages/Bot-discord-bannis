@@ -22,7 +22,10 @@ module.exports = {
 					.send(messageEmbed)
 					.then(msg => msg.delete({ timeout: 5000 }));
 			})
-			.catch(console.error);
+			.catch(error => {
+				message.reply('je ne peux pas effacer ce nombre de messages');
+				console.error(error);
+			});
 
 		return;
 	},
