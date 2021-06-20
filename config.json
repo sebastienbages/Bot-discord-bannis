@@ -1,26 +1,6 @@
 {
     "prefix": "!",
-    "token": "NzE1MTgyMDY4NDA5MDQwOTg2.Xs5fNA.S3Psn7tbkAd2jCspz8MwxEHX-yU",
-    "tokenTopServer": "A2LCMNVWGS",
-    "guildId": "709067153323720816",
     "color": "#ffff00",
-    "roles": {
-        "start": "709067153323720818"
-    },
-    "channels": {
-        "welcome": "709067153508270186",
-        "survey": "709067153814585426"
-    },
-    "webhooks": {
-        "serverKeeper": {
-            "id": "716753750391521363",
-            "token": "FgJPRLMcca3dtHCDKpEHaHMNkVB6h9_pejtzBaE41_MtORVo-In71Z5w4P79gEGHsVYy"
-        },
-        "votesKeeper": {
-            "id": "716748494769225819",
-            "token": "XulylNRdRZhdNwEgrNd1wo_eZk1yTiJdcApCbalwR4ARSRh548vQC2JYPSdReCn-bKzr"
-        }
-    },
     "admins": [
         "290450711278387230"
     ]

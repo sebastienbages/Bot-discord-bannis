@@ -1,17 +1,17 @@
 const { Collection } = require('discord.js');
-const { prefix, guildId, webhooks } = require('../config.json');
-const { votesKeeper } = webhooks;
+const { prefix } = require('../config.json');
+const voteKeeperId = process.env.WH_VK_ID;
 
 module.exports = {
 	name: 'message',
 	once: false,
 	execute(message, client) {
 
-		if (message.author.bot) return;
-
-		if (message.author.id === votesKeeper.id) {
+		if (message.author.id === voteKeeperId) {
 			return message.delete({ timeout: 4 * 60 * 60 * 1000 });
 		}
+
+		if (message.author.bot) return;
 
 		if (message.channel.type === 'dm' && !message.content.startsWith(prefix)) {
 			return client.services.get('messageToAdmin').execute(message, client.users);
@@ -32,7 +32,7 @@ module.exports = {
 
 		if (command.permissions) {
 
-			const guild = client.guilds.cache.find(g => g.id === process.env.GUILD_ID || guildId);
+			const guild = client.guilds.cache.find(g => g.id === process.env.GUILD_ID);
 			const authorPerms = guild.members.cache.find(user => user.id === message.author.id);
 
 			if (!authorPerms || !authorPerms.hasPermission(command.permissions)) {

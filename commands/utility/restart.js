@@ -1,5 +1,4 @@
 const { WebhookClient } = require('discord.js');
-const { webhooks } = require('../../config.json');
 
 module.exports = {
 	name: 'restart',
@@ -12,7 +11,7 @@ module.exports = {
 	permissions: 'ADMINISTRATOR',
 	execute() {
 
-		const webhook = new WebhookClient(webhooks.serverGuard.id, webhooks.serverGuard.token);
+		const webhook = new WebhookClient(process.env.WH_SK_ID, process.env.WH_SK_TOKEN);
 		const msg = ':warning: @everyone Nous allons redémarrer le serveur, veuillez vous déconnecter :warning:';
 
 		webhook.send(msg);

@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { color, channels } = require('../../config.json');
+const { color } = require('../../config.json');
 
 module.exports = {
 	name: 'survey',
@@ -12,7 +12,7 @@ module.exports = {
 	permissions: 'ADMINISTRATOR',
 	execute(message, args) {
 
-		const sondageChannel = message.guild.channels.cache.find(channel => channel.id === channels.survey);
+		const sondageChannel = message.guild.channels.cache.find(channel => channel.id === process.env.CHA_SURVEY);
 
 		if (!sondageChannel) {
 

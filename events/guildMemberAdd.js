@@ -1,4 +1,4 @@
-const { roles, channels, color } = require('../config.json');
+const { color } = require('../config.json');
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
 	once: false,
 	execute(member) {
 		console.log(`Détection de l'arrivée du joueur "${member.displayName}" sur le Discord`);
-		const role = member.guild.roles.cache.find(r => r.id === roles.start);
+		const role = member.guild.roles.cache.find(r => r.id === process.env.ROLE_START);
 
 		if (role) {
 			member.roles.add(role);
@@ -16,7 +16,7 @@ module.exports = {
 			console.log('Echec de l\'attribution du role');
 		}
 
-		const welcomeChannel = member.guild.channels.cache.find(channel => channel.id === channels.welcome);
+		const welcomeChannel = member.guild.channels.cache.find(channel => channel.id === process.env.CHA_WELCOME);
 
 		const welcomeEmbed = new MessageEmbed()
 			.setColor(color)

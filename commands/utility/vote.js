@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { MessageEmbed, WebhookClient } = require('discord.js');
-const { webhooks, tokenTopServer, color } = require('../../config.json');
+const { color } = require('../../config.json');
 
 module.exports = {
 	name: 'vote',
@@ -13,22 +13,23 @@ module.exports = {
 	permissions: 'ADMINISTRATOR',
 	execute() {
 
-		const webhook = new WebhookClient(webhooks.votesKeeper.id, webhooks.votesKeeper.token);
+		const webhook = new WebhookClient(process.env.WH_VK_ID, process.env.WH_VK_TOKEN);
+		const token = process.env.TOKEN_TOP_SERVEUR;
 
 		const getUrlTopServeur = async () => {
-			const response = await axios.get('https://api.top-serveurs.net/v1/servers/' + tokenTopServer);
+			const response = await axios.get('https://api.top-serveurs.net/v1/servers/' + token);
 			return response.data.server.slug;
 		};
 
 		const getNumberOfVotes = async () => {
-			const response = await axios.get('https://api.top-serveurs.net/v1/servers/' + tokenTopServer + '/stats');
+			const response = await axios.get('https://api.top-serveurs.net/v1/servers/' + token + '/stats');
 			const date = new Date().getMonth();
 			const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december' ];
 			const currentMonth = months[date];
 			return response.data.stats.monthly[0][currentMonth + '_votes'];
 		};
 
-		const getData = async () => {
+		const runVote = async () => {
 			const serverSlug = await getUrlTopServeur();
 			const numberOfVotes = await getNumberOfVotes();
 			const topServeurUrl = 'https://top-serveurs.net/conan-exiles/vote/' + serverSlug;
@@ -41,12 +42,12 @@ module.exports = {
 				.setThumbnail('attachment://topServeur.png')
 				.setDescription('N\'hésitez pas à donner un coup de pouce au serveur en votant. Merci pour votre participation :thumbsup:')
 				.addField('LIEN TOP SERVEUR', topServeurUrl)
-				.setFooter(`Pour l'instant, nous comptabilisons ${numberOfVotes} votes ce mois-ci`);
+				.setFooter(`Pour l'instant, nous avons ${numberOfVotes} votes ce mois-ci`);
 
 			return webhook.send(messageEmbed)
 				.catch(console.error);
 		};
 
-		getData();
+		runVote();
 	},
 };

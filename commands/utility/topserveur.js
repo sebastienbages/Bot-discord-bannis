@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { MessageEmbed } = require('discord.js');
-const { color, tokenTopServer } = require('../../config.json');
+const { color } = require('../../config.json');
 
 module.exports = {
 	name: 'topserveur',
@@ -15,7 +15,7 @@ module.exports = {
 		let url, title;
 
 		const option = args[0];
-		const token = process.env.TOKEN_TOP_SERVEUR || tokenTopServer;
+		const token = process.env.TOKEN_TOP_SERVEUR;
 
 		if (option === 'last') {
 			url = 'https://api.top-serveurs.net/v1/servers/' + token + '/players-ranking?type=lastMonth';

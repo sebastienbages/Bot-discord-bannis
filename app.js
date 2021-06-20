@@ -1,6 +1,6 @@
 const { Client, Collection } = require('discord.js');
 const fs = require('fs');
-const { token } = require('./config.json');
+require('dotenv').config();
 
 const client = new Client();
 client.commands = new Collection();
@@ -37,4 +37,4 @@ for (const file of servicesFiles) {
 	client.services.set(service.name, service);
 }
 
-client.login(process.env.TOKEN || token);
+client.login(process.env.TOKEN);
