@@ -1,6 +1,8 @@
 const { Client, Collection } = require('discord.js');
 const fs = require('fs');
+const mysql = require('mysql');
 require('dotenv').config();
+const connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 const client = new Client();
 client.commands = new Collection();
@@ -24,7 +26,7 @@ for (const file of eventFiles) {
 		client.once(event.name, (...args) => event.execute(...args, client));
 	}
 	else {
-		client.on(event.name, (...args) => event.execute(...args, client));
+		client.on(event.name, (...args) => event.execute(...args, client, connection));
 	}
 }
 
