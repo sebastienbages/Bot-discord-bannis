@@ -1,4 +1,4 @@
-# BELOR
+# BOT DISCORD
 
 <img src="https://img.shields.io/badge/Uses-JS-efd81e" alt="uses javascript"> <img src="https://img.shields.io/badge/Uses-NodeJS-73ac61" alt="made with node.js"> <img src="https://img.shields.io/badge/Uses-Mysql-f7f7f7" alt="made with mysql"> <img src="https://img.shields.io/badge/NPM-Discord.js%20v12.2.0-1591f1" alt="uses discord.js"> <img src="https://img.shields.io/badge/Host-Heroku-6762a5" alt="host heroku"> <img src="https://img.shields.io/badge/Uses-Git-red.svg" alt="uses git"> <img src="https://img.shields.io/badge/Uses-VS Code-22a1eb" alt="uses vscode">
  
