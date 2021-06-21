@@ -8,13 +8,13 @@
 
 Bot du serveur Discord appelé "Les Bannis". Celui-ci rassemble les joueurs du serveur multijoueurs appelé aussi "Les Bannis" basé sur le jeux vidéo PC "Conan Exiles" développé par Funcom. Il permet l'administration automatique des membres du serveur et apporte des commandes, outils et fonctions spécifiques aux administrateurs et membres du serveur. 
 
-Le bot est relié à une base de données MySQL hébergée par <p align="center"><a href="https://www.jawsdb.com/">JawsDB</a></p> et consomme l'API de <p align="center"><a href="https://top-serveurs.net/">Top Serveurs</a></p>
+Le bot est relié à une base de données MySQL hébergée par [JawsDB](https://www.jawsdb.com/) et consomme l'API de [Top Serveurs](https://top-serveurs.net/)
 
 🇬🇧/🇺🇸
 
 Bot from the Discord server called "The Banned". This brings together the players of the multiplayer server also called "The Banned" based on the PC video game "Conan Exiles" developed by Funcom. It allows automatic administration of server members and provides commands, tools and functions specific to administrators and members of the server.
 
-The Bot is connected to a MySQL Database host by <p align="center"><a href="https://www.jawsdb.com/">JawsDB</a> ans consume the API of <p align="center"><a href="https://top-serveurs.net/">Top Serveurs</a></p>
+The Bot is connected to a MySQL Database host by [JawsDB](https://www.jawsdb.com/) and consume the API of [Top Serveurs](https://top-serveurs.net/)
 
 
 ![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)
