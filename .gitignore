@@ -105,6 +105,3 @@ dist
 
 #Visual studio code files
 .vscode
-
-#WebStorm files
-.idea
